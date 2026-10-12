@@ -2,6 +2,7 @@ package com.audiototext.audiototect.services;
 
 
 import org.springframework.ai.audio.transcription.TranscriptionModel;
+import org.springframework.ai.openai.OpenAiAudioTranscriptionOptions;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,33 @@ public class AudioService {
 
     public String convertAudioToText(Resource inputAudio) {
 
+        //speech to text
+        return transcriptionModel.transcribe(inputAudio);
+
     }
+
+    public String convertAudioToTextWithOptions(Resource inputAudio) {
+
+        return transcriptionModel.transcribe(inputAudio, OpenAiAudioTranscriptionOptions.builder()
+                 .language("en")
+                 .temperature(0.7f)
+                 .prompt("Spring Ai")
+                 .build()
+           );
+
+
+//        String transcribe = transcriptionModel.transcribe(inputAudio, OpenAiAudioTranscriptionOptions.builder()
+//                .language("en")
+//                .temperature(0.7f)
+//                .prompt("Spring Ai")
+//                .build()
+//        );
+//
+//        return transcribe;
+
+
+    }
+
 
 }
 
