@@ -36,14 +36,12 @@ public class AudioController {
 
         String responseText = audioService.convertAudioToText(audioFile.getResource());
         return ResponseEntity.ok(responseText);
-
-
     }
 
 
     @PostMapping("/transcript")
     public ResponseEntity<String> transcriptAudio(
-        @Value("${classpath:sample.m4a}") Resource inputAudio) {
+        @Value("${classpath:sample-3.m4a}") Resource inputAudio) {
 
         //now by using springai we have to convert audio to text
 
